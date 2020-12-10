@@ -4,6 +4,7 @@ Da: http://phrack.org/issues/60/10.html
 
 ## Overflow di lunghezza
 
+```c
     /* ex1.c - loss of precision */
     #include <stdio.h>
 
@@ -23,17 +24,20 @@ Da: http://phrack.org/issues/60/10.html
             return 0;
     }
     /* EOF */
+```
 
+```
 massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$ ./ex1
 l = 0xdeadbeef (32 bits)
 s = 0xffffbeef (16 bits)
 c = 0xffffffef (8 bits)
 massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$
+```
 
 ## Esempio conseguenze
 
     
-    
+```c    
     /* width1.c - exploiting a trivial widthness bug */
     #include <stdio.h>
     #include <stdlib.h>
@@ -64,8 +68,9 @@ massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$
 
             return 0;
     }
+```
 
-
+```
 massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$ ./width1 6 ciao
 s = 6
 ciao
@@ -76,9 +81,11 @@ massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$ ./width1 65536 ciao
 s = 0
 Segmentation fault (core dumped)
 massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$
+```
 
 ## Arithmetic overflows
 
+```
     /* ex2.c - an integer overflow */
     #include <stdio.h>
 
@@ -92,13 +99,17 @@ massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$
             return 0;
     }
     /* EOF */
+```
 
+```
 massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$ ./ex2
 num is 32 bits long
 num = 0xffffffff
 num + 1 = 0x0
-massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$ 
+massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$
+```
 
+```
     /* ex3.c - change of signedness */
     #include <stdio.h>
 
@@ -113,13 +124,17 @@ massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$
             return 0;
     }
     /* EOF */
+```
 
+```
 massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$ ./ex3
 l = 2147483647 (0x7fffffff)
 l + 1 = -2147483648 (0x80000000)
 massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$
+```
 
-/* ex4.c - various arithmetic overflows */
+```c
+    /* ex4.c - various arithmetic overflows */
     #include <stdio.h>
 
     int main(void){
@@ -142,3 +157,4 @@ massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$
     }
     /* EOF */
 
+```
