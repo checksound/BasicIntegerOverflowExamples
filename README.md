@@ -158,3 +158,13 @@ massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$
     /* EOF */
 
 ```
+
+```
+massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$ ./ex4
+l = 1073741824 (0x40000000)
+l + 0xc0000000 = 0 (0x0)
+l * 0x4 = 0 (0x0)
+l - 0xffffffff = 1073741825 (0x40000001)
+massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$
+```
+
