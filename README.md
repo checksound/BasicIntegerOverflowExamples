@@ -95,7 +95,7 @@ variabile può contenere, il valore verrà troncato. Se il valore immagazzinato 
 
 Sotto un esempio:         
 
-```
+```c
     /* ex2.c - an integer overflow */
     #include <stdio.h>
 
@@ -124,7 +124,7 @@ un cambiamento nel segno che può avere significativi impatti nel codice che seg
 
 Vediamo questo esempio:
 
-```
+```c
     /* ex3.c - change of signedness */
     #include <stdio.h>
 
