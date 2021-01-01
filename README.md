@@ -4,6 +4,11 @@ Da: http://phrack.org/issues/60/10.html
 
 ## Overflow di lunghezza
 
+Un overflow di un intero può essere dovuto al tentativo di
+immagazzinare un valore in una variabile che è troppo 
+piccola per poterlo contenere. L'esempio più semplice
+può essere visto dalla semplice assegnamento del contenuto di una variabile grande a una più piccola:
+
 ```c
     /* ex1.c - loss of precision */
     #include <stdio.h>
@@ -35,7 +40,6 @@ massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$
 ```
 
 ## Esempio conseguenze
-
     
 ```c    
     /* width1.c - exploiting a trivial widthness bug */
@@ -85,6 +89,12 @@ massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$
 
 ## Arithmetic overflows
 
+Come mostrato negli esempi precedenti, se viene fatto un tentativo di
+immagazzinare un valore intero che è più grande che il massimo valore che la 
+variabile può contenere, il valore verrà troncato. Se il valore immagazzinato è il risultato di un'operazione aritmatica, qualsisi parte del programma che in seguito utilizzerà il risultato, sarà incorretto.
+
+Sotto un esempio:         
+
 ```
     /* ex2.c - an integer overflow */
     #include <stdio.h>
@@ -109,6 +119,11 @@ num + 1 = 0x0
 massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$
 ```
 
+Poichè un inero è signed di default, un overflow di un intero può causare
+un cambiamento nel segno che può avere significativi impatti nel codice che segue.
+
+Vediamo questo esempio:
+
 ```
     /* ex3.c - change of signedness */
     #include <stdio.h>
@@ -132,6 +147,12 @@ l = 2147483647 (0x7fffffff)
 l + 1 = -2147483648 (0x80000000)
 massimo@massimo-VirtualBox:~/workspace/BasicIntegerOverflow$
 ```
+
+L'addizione non è la sola operazione aritmetica che può causare l'overflow
+di un indice. Quasi ogni operazione che causa il cambiamento del valore di
+una variabile può provocare un overflow.
+
+Vediamo qui sotto un esempio:
 
 ```c
     /* ex4.c - various arithmetic overflows */
